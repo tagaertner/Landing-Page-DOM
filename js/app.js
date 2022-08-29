@@ -1,15 +1,19 @@
-const navagation = document.querySelectorAll(".toggle")
-function navBar(){
-return`<ul class ="active">
-       <li><a href='#'>nave content 1</a></li>
-       <li><a href='#'>nav content 2</a></li>
-       <li><a href='#'>nav content 3</a></li>
-       <li><a href='#'>nav content 4</a></li>
-       </ul>`
-}
-document.addEventListener("DOMContentLoaded", (e)=>{
-  e.preventDefault()
-navagation.forEach(navItem=> {
-  navItem.insertAdjacentHTML("beforeend", navBar())
-})
+let navEl = document.querySelector("nav");
+
+console.log(navEl)
+// nav > ul > li*3 > a
+let ulEl = document.createElement("ul");
+
+
+navEl.append(ulEl);
+
+
+Array.from({length:4}).forEach((_,i)=>{
+  let liEL = document.createElement("li");
+  let aEL = document.createElement("a");
+  ulEl.append(liEL);
+  liEL.appendChild(aEL);
+  aEL.innerHTML = `Nav content ${++i}`;
+  aEL.href = `#content ${i}`
+  // addEventListener('click')
 })
